@@ -2,7 +2,16 @@ package com.cl3villegasdsw.persona;
 
 public class PersonaMapper {
 
-    public static Persona mapFromCommandInsertToEntity(PersoInserDto perInsertdto){
+    public static PersonResumen mapperEntity(Persona person){
+
+    	PersonResumen personresumen = new PersonResumen();
+        personresumen.setNombre(person.getNombre());
+        personresumen.setApellido(person.getApellido());
+        personresumen.setDni(person.getDni());
+        return personresumen;
+    }
+    
+    public static Persona mapperInsertToEntity(PersoInserDto perInsertdto){
 
         Persona personamaper = new Persona();
         personamaper.setNombre(perInsertdto.getNombre());
@@ -14,8 +23,7 @@ public class PersonaMapper {
         return personamaper;
     }
 
-    public static Persona mapFromCommandUpdateToEntity(PersoUpdateDto persoUpdateDto,Persona personaMapper){
-
+    public static Persona mapperUpdateToEntity(PersoUpdateDto persoUpdateDto,Persona personaMapper){
     	personaMapper.setNombre(persoUpdateDto.getNombre());
     	personaMapper.setDni(persoUpdateDto.getDni());
     	personaMapper.setApellido(persoUpdateDto.getApellido());
@@ -25,13 +33,6 @@ public class PersonaMapper {
         return personaMapper;
     }
 
-    public static PersonaResumen mapperEntity(Persona person){
 
-        PersonaResumen personresumen = new PersonaResumen();
-        personresumen.setNombre(person.getNombre());
-        personresumen.setApellido(person.getApellido());
-        personresumen.setDni(person.getDni());
-        return personresumen;
-    }
 
 }

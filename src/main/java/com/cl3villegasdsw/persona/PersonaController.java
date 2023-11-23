@@ -38,7 +38,7 @@ public class PersonaController {
     @ResponseStatus(HttpStatus.CREATED)
     public Persona registrar(@RequestBody @Valid PersoInserDto persoInserDto)
     {
-        return personaRepository.save(PersonaMapper.mapFromCommandInsertToEntity(persoInserDto));
+        return personaRepository.save(PersonaMapper.mapperInsertToEntity(persoInserDto));
     }
 
     @DeleteMapping("{id}")
@@ -51,7 +51,7 @@ public class PersonaController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Page<PersonaResumen> listar(Pageable pageable)
+    public Page<PersonResumen> listar(Pageable pageable)
     {
         return personaRepository.findAll(pageable).map(PersonaMapper::mapperEntity);
     }
@@ -60,7 +60,7 @@ public class PersonaController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Persona actualizar(@PathVariable Long id, @RequestBody PersoUpdateDto persoUpdateDto)
     {
-        Persona persona = PersonaMapper.mapFromCommandUpdateToEntity(persoUpdateDto, personaRepository.findById(id).orElse(new Persona()));
+        Persona persona = PersonaMapper.mapperUpdateToEntity(persoUpdateDto, personaRepository.findById(id).orElse(new Persona()));
         return personaRepository.save(persona);
     }
     

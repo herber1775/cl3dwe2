@@ -22,7 +22,7 @@ public class Persona {
     @NotBlank
     private String apellido;
     @NotBlank
-    @Pattern(regexp="[\\d]{7}")
+    @Pattern(regexp="[\\d]{7}") //asi dice el eaxmen 
     private String dni;
     @NotBlank
     private String direccion;
