@@ -1,5 +1,4 @@
 package com.cl3villegasdsw.persona;
-
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("personas")
 @AllArgsConstructor
@@ -20,9 +18,17 @@ public class PersonaController {
 
     PersonaRepository personaRepository;  
 
-    @GetMapping("/sinPag")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Persona> listarSinPaginacion() {
+    public Page<PersonResumen> listar(Pageable pageable)
+    {
+        return personaRepository.findAll(pageable).map(PersonaMapper::mapperEntity);
+    }
+    
+    @GetMapping("/pagination")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Persona> listarSinPaginacion()
+    {
         return personaRepository.findAll();
     }
 
@@ -32,6 +38,12 @@ public class PersonaController {
     (@PathVariable Long id)
     {
         return ResponseEntity.of(personaRepository.findById(id));
+    }
+    
+    @GetMapping("/personDni")
+    public ResponseEntity<Persona> obtenerPorDni(@RequestParam String dni)
+    {
+        return ResponseEntity.ok(personaRepository.findPersonaByDni(dni).orElse(new Persona()));
     }
 
     @PostMapping
@@ -46,14 +58,7 @@ public class PersonaController {
     public ResponseEntity<String> borrar(@PathVariable Long id)
     {
         personaRepository.deleteById(id);
-        return ResponseEntity.ok("Se eliminó con exito");
-    }
-
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public Page<PersonResumen> listar(Pageable pageable)
-    {
-        return personaRepository.findAll(pageable).map(PersonaMapper::mapperEntity);
+        return ResponseEntity.ok("Eliminado");
     }
 
     @PutMapping("{id}")
@@ -63,13 +68,5 @@ public class PersonaController {
         Persona persona = PersonaMapper.mapperUpdateToEntity(persoUpdateDto, personaRepository.findById(id).orElse(new Persona()));
         return personaRepository.save(persona);
     }
-    
-    @GetMapping("/obtenerPDni")
-    public ResponseEntity<Persona> obtenerPorDni(@RequestParam String dni)
-    {
-        return ResponseEntity.ok(personaRepository.findPersonaByDni(dni).orElse(new Persona()));
-    }
-
-
 
 }
