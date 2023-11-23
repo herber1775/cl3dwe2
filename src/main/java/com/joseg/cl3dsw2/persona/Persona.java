@@ -18,7 +18,6 @@ public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @NotBlank
     private String nombre;
     @NotBlank
@@ -28,11 +27,8 @@ public class Persona {
     private String dni;
     @NotBlank
     private String direccion;
-
-    @Past
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @Past @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate fechaNacimiento;
-
     @Email
     private String email;
 }
