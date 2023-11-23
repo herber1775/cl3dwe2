@@ -1,4 +1,4 @@
-package com.joseg.cl3dsw2.persona;
+package com.cl3villegasdsw.persona;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

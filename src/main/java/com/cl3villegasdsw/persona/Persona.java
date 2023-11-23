@@ -1,5 +1,4 @@
-package com.joseg.cl3dsw2.persona;
-
+package com.cl3villegasdsw.persona;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

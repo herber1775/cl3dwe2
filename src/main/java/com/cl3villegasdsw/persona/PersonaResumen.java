@@ -1,4 +1,4 @@
-package com.joseg.cl3dsw2.persona;
+package com.cl3villegasdsw.persona;
 
 import lombok.Getter;
 import lombok.Setter;

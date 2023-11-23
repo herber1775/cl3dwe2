@@ -1,4 +1,4 @@
-package com.joseg.cl3dsw2;
+package com.cl3villegasdsw;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
@@ -17,10 +17,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 		servers = {
 				@Server(url = "http://localhost:8080", description = "Local")
 		})
-public class Cl3dsw2Application {
+public class cl3villegasdswApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Cl3dsw2Application.class, args);
+		SpringApplication.run(cl3villegasdswApplication.class, args);
 	}
 
 }
