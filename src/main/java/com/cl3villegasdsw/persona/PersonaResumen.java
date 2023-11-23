@@ -1,15 +1,12 @@
 package com.cl3villegasdsw.persona;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class PersonaResumen {
-
     private String nombre;
-
     private String apellido;
-
     private String dni;
+    
+    //para el resumen del json 
 }

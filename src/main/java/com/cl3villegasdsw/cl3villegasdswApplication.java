@@ -7,11 +7,16 @@ import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+//http://localhost:8080/swagger-ui/index.html
 @SpringBootApplication
 @OpenAPIDefinition(info = @Info(
-		title = "API Personas",
-		description = "CRUD de Personas", contact = @Contact(email = "teloidusa@hotmai.com")),
-		servers = {@Server(url = "http://localhost:8081", description = "Local")})
+		title = "API",
+		description = "CRUD de Personas",
+		contact = @Contact(email = "teloidusa@hotmai.com")),
+		servers =
+		{
+			@Server(url = "http://localhost:8080", description = "Develop")
+		})
 
 public class cl3villegasdswApplication {
 

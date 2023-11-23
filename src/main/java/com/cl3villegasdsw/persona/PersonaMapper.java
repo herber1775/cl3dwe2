@@ -4,7 +4,7 @@ public class PersonaMapper {
 
     public static Persona mapFromCommandInsertToEntity(PersoInserDto perInsertdto){
 
-        Persona personamaper = new Persona();//personaInsertCommand -personaUpdateCommand
+        Persona personamaper = new Persona();
         personamaper.setNombre(perInsertdto.getNombre());
         personamaper.setApellido(perInsertdto.getApellido());
         personamaper.setDni(perInsertdto.getDni());
@@ -23,7 +23,7 @@ public class PersonaMapper {
     	personaMapper.setFechaNacimiento(persoUpdateDto.getFechaNacimiento());
     	personaMapper.setEmail(persoUpdateDto.getEmail());
         return personaMapper;
-    } //mapperEntity mapFromEntityToResumen
+    }
 
     public static PersonaResumen mapperEntity(Persona person){
 

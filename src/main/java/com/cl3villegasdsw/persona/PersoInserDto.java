@@ -4,13 +4,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
-
 import java.time.LocalDate;
 
 @Data
 public class PersoInserDto {
     private String nombre;
-    private String apellido; //PersonaInsertCommand
+    private String apellido;
     private String dni;
     private String direccion;
     @JsonFormat(pattern="dd-MM-yyyy")

@@ -1,13 +1,12 @@
 package com.cl3villegasdsw.persona;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Getter;
-import lombok.Setter;
+
+import lombok.Data;
 
 import java.time.LocalDate;
 
-@Getter
-@Setter
+@Data
 public class PersoUpdateDto {
 
     private Long id; //PersoUpdateDto PersonaUpdateCommand
