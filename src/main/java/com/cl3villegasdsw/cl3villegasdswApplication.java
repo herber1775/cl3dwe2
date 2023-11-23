@@ -10,13 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @OpenAPIDefinition(info = @Info(
 		title = "API Personas",
-		description = "Contiene las API REST para hacer CRUD de Personas", contact = @Contact(
-		email = "devteam@quekiwi.com",
-		name = "Equipo de desarrollo"
-		)),
-		servers = {
-				@Server(url = "http://localhost:8080", description = "Local")
-		})
+		description = "CRUD de Personas", contact = @Contact(email = "devteam@quekiwi.com")),
+		servers = {@Server(url = "http://localhost:8081", description = "Local")})
+
 public class cl3villegasdswApplication {
 
 	public static void main(String[] args) {
