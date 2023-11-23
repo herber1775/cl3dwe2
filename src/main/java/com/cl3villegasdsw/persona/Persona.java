@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@Table(name = "tbpersona")
+@Table(name = "tbpersona") //PersonaMapper
 public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

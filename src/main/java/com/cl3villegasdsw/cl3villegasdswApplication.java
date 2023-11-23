@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @OpenAPIDefinition(info = @Info(
 		title = "API Personas",
-		description = "CRUD de Personas", contact = @Contact(email = "devteam@quekiwi.com")),
+		description = "CRUD de Personas", contact = @Contact(email = "teloidusa@hotmai.com")),
 		servers = {@Server(url = "http://localhost:8081", description = "Local")})
 
 public class cl3villegasdswApplication {

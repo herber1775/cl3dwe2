@@ -18,20 +18,7 @@ import java.util.List;
 @Validated
 public class PersonaController {
 
-    PersonaRepository personaRepository;
-
-    @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Persona> obtenerPorId(@PathVariable Long id){
-        return ResponseEntity.of(personaRepository.findById(id));
-    }
-
-    @GetMapping("/obtenerPDni")
-    public ResponseEntity<Persona> obtenerPorDni(@RequestParam String dni){
-        return ResponseEntity.ok(personaRepository.findPersonaByDni(dni).orElse(new Persona()));
-    }
-
-
+    PersonaRepository personaRepository;  
 
     @GetMapping("/sinPag")
     @ResponseStatus(HttpStatus.OK)
@@ -39,32 +26,50 @@ public class PersonaController {
         return personaRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Persona> obtenerPorId
+    (@PathVariable Long id)
+    {
+        return ResponseEntity.of(personaRepository.findById(id));
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Persona registrar(@RequestBody @Valid PersonaInsertCommand personaInsertCommand) {
-        return personaRepository.save(PersonaMapper.mapFromCommandInsertToEntity(personaInsertCommand));
+    public Persona registrar(@RequestBody @Valid PersoInserDto persoInserDto)
+    {
+        return personaRepository.save(PersonaMapper.mapFromCommandInsertToEntity(persoInserDto));
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<String> borrar(@PathVariable Long id) {
+    public ResponseEntity<String> borrar(@PathVariable Long id)
+    {
         personaRepository.deleteById(id);
         return ResponseEntity.ok("Se eliminó con exito");
     }
 
-
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Page<PersonaResumen> listar(Pageable pageable) {
-        return personaRepository.findAll(pageable).map(PersonaMapper::mapFromEntityToResumen);
+    public Page<PersonaResumen> listar(Pageable pageable)
+    {
+        return personaRepository.findAll(pageable).map(PersonaMapper::mapperEntity);
     }
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Persona actualizar(@PathVariable Long id, @RequestBody PersonaUpdateCommand personaUpdateCommand) {
-        Persona persona = PersonaMapper.mapFromCommandUpdateToEntity(personaUpdateCommand, personaRepository.findById(id).orElse(new Persona()));
+    public Persona actualizar(@PathVariable Long id, @RequestBody PersoUpdateDto persoUpdateDto)
+    {
+        Persona persona = PersonaMapper.mapFromCommandUpdateToEntity(persoUpdateDto, personaRepository.findById(id).orElse(new Persona()));
         return personaRepository.save(persona);
     }
+    
+    @GetMapping("/obtenerPDni")
+    public ResponseEntity<Persona> obtenerPorDni(@RequestParam String dni)
+    {
+        return ResponseEntity.ok(personaRepository.findPersonaByDni(dni).orElse(new Persona()));
+    }
+
 
 
 }

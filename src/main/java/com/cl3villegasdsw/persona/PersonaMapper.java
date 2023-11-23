@@ -1,39 +1,37 @@
 package com.cl3villegasdsw.persona;
 
-
-
 public class PersonaMapper {
 
-    public static Persona mapFromCommandInsertToEntity(PersonaInsertCommand personaInsertCommand){
+    public static Persona mapFromCommandInsertToEntity(PersoInserDto perInsertdto){
 
-        Persona persona = new Persona();
-        persona.setNombre(personaInsertCommand.getNombre());
-        persona.setApellido(personaInsertCommand.getApellido());
-        persona.setDni(personaInsertCommand.getDni());
-        persona.setDireccion(personaInsertCommand.getDireccion());
-        persona.setFechaNacimiento(personaInsertCommand.getFechaNacimiento());
-        persona.setEmail(personaInsertCommand.getEmail());
-        return persona;
+        Persona personamaper = new Persona();//personaInsertCommand -personaUpdateCommand
+        personamaper.setNombre(perInsertdto.getNombre());
+        personamaper.setApellido(perInsertdto.getApellido());
+        personamaper.setDni(perInsertdto.getDni());
+        personamaper.setDireccion(perInsertdto.getDireccion());
+        personamaper.setFechaNacimiento(perInsertdto.getFechaNacimiento());
+        personamaper.setEmail(perInsertdto.getEmail());
+        return personamaper;
     }
 
-    public static Persona mapFromCommandUpdateToEntity(PersonaUpdateCommand personaUpdateCommand,Persona persona){
+    public static Persona mapFromCommandUpdateToEntity(PersoUpdateDto persoUpdateDto,Persona personaMapper){
 
-        persona.setNombre(personaUpdateCommand.getNombre());
-        persona.setDni(personaUpdateCommand.getDni());
-        persona.setApellido(personaUpdateCommand.getApellido());
-        persona.setDireccion(personaUpdateCommand.getDireccion());
-        persona.setFechaNacimiento(personaUpdateCommand.getFechaNacimiento());
-        persona.setEmail(personaUpdateCommand.getEmail());
-        return persona;
-    }
+    	personaMapper.setNombre(persoUpdateDto.getNombre());
+    	personaMapper.setDni(persoUpdateDto.getDni());
+    	personaMapper.setApellido(persoUpdateDto.getApellido());
+    	personaMapper.setDireccion(persoUpdateDto.getDireccion());
+    	personaMapper.setFechaNacimiento(persoUpdateDto.getFechaNacimiento());
+    	personaMapper.setEmail(persoUpdateDto.getEmail());
+        return personaMapper;
+    } //mapperEntity mapFromEntityToResumen
 
-    public static PersonaResumen mapFromEntityToResumen(Persona persona){
+    public static PersonaResumen mapperEntity(Persona person){
 
-        PersonaResumen personaResumen = new PersonaResumen();
-        personaResumen.setNombre(persona.getNombre());
-        personaResumen.setApellido(persona.getApellido());
-        personaResumen.setDni(persona.getDni());
-        return personaResumen;
+        PersonaResumen personresumen = new PersonaResumen();
+        personresumen.setNombre(person.getNombre());
+        personresumen.setApellido(person.getApellido());
+        personresumen.setDni(person.getDni());
+        return personresumen;
     }
 
 }
